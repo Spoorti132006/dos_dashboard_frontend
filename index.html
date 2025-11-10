@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DoS Dashboard</title>
+</head>
+<body>
+  <h1>Simulate DoS Attack</h1>
+  <button onclick="simulateAttack()">Send Attack</button>
+
+  <script>
+    function simulateAttack() {
+      fetch('https://your-dos-dashboard.onrender.com/simulate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          source_ip: '192.168.1.100',
+          packet_count: 500
+        })
+      })
+      .then(res => res.json())
+      .then(data => alert("Attack simulated: " + JSON.stringify(data)))
+      .catch(err => console.error("Error:", err));
+    }
+  </script>
+</body>
+</html>
